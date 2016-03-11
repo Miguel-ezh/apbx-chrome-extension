@@ -2,24 +2,84 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>ActivePBX - Click To Call</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- build:css styles/popup-vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body>
-    <h1>'Allo, 'Allo!</h1>
+  <body ng-cloak flex style="background-color: #CFD8DC; width: 300px;" class="ui-view-container">
+    <div class="well" ui-view layout-fill>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon aria-label="Settings" class="material-icons">settings</md-icon>
+          </md-button>
+          <h2>
+            <span>ActivePBX</span>
+          </h2>
+        </div>
+      </md-toolbar>
+      <md-content id="login-form" flex layout="column" layout-padding >
+        <h3 class="md-subhead" style="text-align: center;">
+          Log in to your account.
+        </h3>
+        <form name="loginForm" novalidate>
+          <md-input-container class="md-block">
+            <label>Username</label>
+            <input required type="email" name="username" ng-model="vm.username">
+            <div ng-messages="loginForm.username.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="email">Invalid email address.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Password</label>
+            <input required name="password" ng-model="vm.password">
+            <div ng-messages="loginForm.password.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <div layout="row" layout-align="center center">
+            <md-button type="submit" class="md-raised md-primary md-buttom-large"
+                       aria-label="Save Credentials" ng-click="vm.test()">
+              Save Credentials
+            </md-button>
+          </div>
+          <div layout="row" layout-align="center center">
+            <md-button type="submit" class="md-raised md-primary md-buttom-large"
+                       aria-label="Validate Credentials" ng-click="vm.test()">
+              Validate Credentials
+            </md-button>
+          </div>
+        </form>
+      </md-content>
+    </div>
 
-    <!-- build:js scripts/popup-vendor.js -->
+  <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="scripts/popup/app.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js scripts/popup.js -->
-    <script src="scripts/popup.js"></script>
+    <!-- build:js -->
     <!-- endbuild -->
   </body>
 </html>

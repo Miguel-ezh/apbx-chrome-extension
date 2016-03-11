@@ -1,3 +1,15 @@
 body {
   padding: 20px;
 }
+
+.md-input {
+  font-size: 20px;
+}
+
+.md-buttom-large{
+  width: 200px;
+}
+
+md-input-container label{
+  font-size: 20px;
+}

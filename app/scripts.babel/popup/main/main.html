@@ -1,0 +1,34 @@
+<md-content id="main-form" flex layout="column" layout-padding >
+  <h3 class="md-subhead" style="text-align: center;">
+    Log in to your account.
+  </h3>
+  <form name="mainForm" novalidate>
+    <md-input-container class="md-block">
+      <label>Username</label>
+      <input required type="email" name="username" ng-model="vm.username">
+      <div ng-messages="mainForm.username.$error">
+        <div ng-message="required">This is required.</div>
+        <div ng-message="email">Invalid email address.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Password</label>
+      <input required type="password" name="password" ng-model="vm.password">
+      <div ng-messages="mainForm.password.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <div layout="row" layout-align="center center">
+      <md-button type="submit" class="md-raised md-primary md-buttom-large"
+                 aria-label="Save Credentials" ng-click="vm.save()" ng-disabled="mainForm.$invalid">
+        Save Credentials
+      </md-button>
+    </div>
+    <div layout="row" layout-align="center center">
+      <md-button type="submit" class="md-raised md-primary md-buttom-large"
+                 aria-label="Validate Credentials" ng-click="vm.test()">
+        Validate Credentials
+      </md-button>
+    </div>
+  </form>
+</md-content>

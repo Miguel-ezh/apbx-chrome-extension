@@ -7,6 +7,8 @@ angular
     let body = document.getElementsByTagName('body')[0];
     let app = angular
       .module(appName, [
+        'app.main',
+        'app.services',
         'ui.router',
         'ngMaterial',
         'ngMessages',
@@ -14,7 +16,7 @@ angular
       ])
       .config( ['$provide', '$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
         function($provide, $stateProvider, $urlRouterProvider, $mdThemingProvider){
-          $urlRouterProvider.otherwise('/');
+          $urlRouterProvider.otherwise('/main');
 
           $mdThemingProvider.theme('default')
             .primaryPalette('blue')

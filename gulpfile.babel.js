@@ -1,9 +1,12 @@
 // generated on 2016-03-09 using generator-chrome-extension 0.5.4
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import fs from 'fs';
 import del from 'del';
 import runSequence from 'run-sequence';
 import {stream as wiredep} from 'wiredep';
+import browserify from 'browserify';
+import babelify from 'babelify';
 
 const $ = gulpLoadPlugins();
 
@@ -80,11 +83,10 @@ gulp.task('chromeManifest', () => {
 });
 
 gulp.task('babel', () => {
-  return gulp.src('app/scripts.babel/**/*.js')
-      .pipe($.babel({
-        presets: ['es2015']
-      }))
-      .pipe(gulp.dest('app/scripts'));
+    browserify("./app/scripts.babel/eventPage.js")
+        .transform("babelify", {presets: ["es2015"]})
+        .bundle()
+        .pipe(fs.createWriteStream("app/scripts/eventPage.js"));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));

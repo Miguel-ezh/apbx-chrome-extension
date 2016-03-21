@@ -10,12 +10,11 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/chromereload.js",
       "scripts/background.js"
     ]
   },
   "permissions": [
-    "tabs", "storage"
+    "tabs", "storage", "webNavigation", "*://*/*"
   ],
   "options_ui": {
     "page": "options.html",
